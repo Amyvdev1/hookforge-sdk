@@ -1,0 +1,18 @@
+# BasicEvaluateFlow
+
+main: kit: flow: BasicEvaluateFlow:
+{
+  entity: "evaluate",
+  kind: "basic",
+  name: "BasicEvaluateFlow",
+  step: [
+    {
+      i: {
+        ref: "evaluate_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicEvaluateFlow"
+}

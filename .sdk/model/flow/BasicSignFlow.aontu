@@ -1,0 +1,18 @@
+# BasicSignFlow
+
+main: kit: flow: BasicSignFlow:
+{
+  entity: "sign",
+  kind: "basic",
+  name: "BasicSignFlow",
+  step: [
+    {
+      i: {
+        ref: "sign_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSignFlow"
+}

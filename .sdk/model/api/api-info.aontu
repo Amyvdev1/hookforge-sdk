@@ -1,0 +1,21 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      description: "Webhook resilience workbench"
+      servers: [
+        {
+          url: "http://127.0.0.1:8765"
+        }
+      ]
+      summary: "Webhook resilience workbench"
+      title: "HookForge"
+      version: "1.0.0"
+      website: "http://127.0.0.1"
+    }
+  }
+}
+

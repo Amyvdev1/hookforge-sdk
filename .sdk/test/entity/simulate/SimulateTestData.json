@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "simulate": {
+      "SIMULATE00": {
+        "capabilities": {},
+        "scenario": {},
+        "id": "SIMULATE00"
+      },
+      "SIMULATE01": {
+        "capabilities": {},
+        "scenario": {},
+        "id": "SIMULATE01"
+      },
+      "SIMULATE02": {
+        "capabilities": {},
+        "scenario": {},
+        "id": "SIMULATE02"
+      }
+    }
+  },
+  "new": {
+    "simulate": {
+      "simulate_ref01": {
+        "capabilities": {},
+        "scenario": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/simulate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

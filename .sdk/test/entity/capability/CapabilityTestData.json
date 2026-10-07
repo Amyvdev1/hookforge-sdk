@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "capability": {
+      "CAPABILITY00": {
+        "id": "CAPABILITY00"
+      },
+      "CAPABILITY01": {
+        "id": "CAPABILITY01"
+      },
+      "CAPABILITY02": {
+        "id": "CAPABILITY02"
+      }
+    }
+  },
+  "new": {
+    "capability": {
+      "capability_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/capabilities": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

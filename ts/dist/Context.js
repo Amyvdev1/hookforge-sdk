@@ -1,0 +1,107 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Context = void 0;
+const node_util_1 = require("node:util");
+const HookforgeError_1 = require("./HookforgeError");
+const StructUtility_1 = require("./utility/StructUtility");
+const Operation_1 = require("./Operation");
+class Context {
+    id = 'C' + ('' + Math.random()).substring(2, 10);
+    // Store the output of each operation step.
+    out = {};
+    // Store for the current operation.
+    current = new WeakMap();
+    ctrl = {};
+    meta = {};
+    client;
+    utility;
+    op;
+    point;
+    config;
+    entopts;
+    options;
+    opmap;
+    response;
+    result;
+    spec;
+    data;
+    reqdata;
+    match;
+    reqmatch;
+    entity;
+    // Shared persistent store.
+    shared;
+    constructor(ctxmap, basectx) {
+        this.client = (0, StructUtility_1.getprop)(ctxmap, 'client', (0, StructUtility_1.getprop)(basectx, 'client'));
+        this.utility = (0, StructUtility_1.getprop)(ctxmap, 'utility', (0, StructUtility_1.getprop)(basectx, 'utility'));
+        // An operation gets its OWN control unless the caller passed one: a
+        // paging cursor left on the client's control would otherwise be picked
+        // up by the next, unrelated call. A context with no opname is not an
+        // operation, so it still shares (an entity's, with the client's).
+        const opname = (0, StructUtility_1.getprop)(ctxmap, 'opname');
+        const basectrl = null == opname ? (0, StructUtility_1.getprop)(basectx, 'ctrl', this.ctrl) : this.ctrl;
+        this.ctrl = (0, StructUtility_1.getprop)(ctxmap, 'ctrl', basectrl);
+        this.meta = (0, StructUtility_1.getprop)(ctxmap, 'meta', (0, StructUtility_1.getprop)(basectx, 'meta', this.meta));
+        this.config = (0, StructUtility_1.getprop)(ctxmap, 'config', (0, StructUtility_1.getprop)(basectx, 'config'));
+        this.entopts = (0, StructUtility_1.getprop)(ctxmap, 'entopts', (0, StructUtility_1.getprop)(basectx, 'entopts'));
+        this.options = (0, StructUtility_1.getprop)(ctxmap, 'options', (0, StructUtility_1.getprop)(basectx, 'options'));
+        this.entity = (0, StructUtility_1.getprop)(ctxmap, 'entity', (0, StructUtility_1.getprop)(basectx, 'entity'));
+        this.shared = (0, StructUtility_1.getprop)(ctxmap, 'shared', (0, StructUtility_1.getprop)(basectx, 'shared'));
+        this.opmap = (0, StructUtility_1.getprop)(ctxmap, 'opmap', (0, StructUtility_1.getprop)(basectx, 'opmap'));
+        this.data = (0, StructUtility_1.getprop)(ctxmap, 'data', {});
+        this.reqdata = (0, StructUtility_1.getprop)(ctxmap, 'reqdata', {});
+        this.match = (0, StructUtility_1.getprop)(ctxmap, 'match', {});
+        this.reqmatch = (0, StructUtility_1.getprop)(ctxmap, 'reqmatch', {});
+        this.point = (0, StructUtility_1.getprop)(ctxmap, 'point', (0, StructUtility_1.getprop)(basectx, 'point'));
+        this.spec = (0, StructUtility_1.getprop)(ctxmap, 'spec', (0, StructUtility_1.getprop)(basectx, 'spec'));
+        this.result = (0, StructUtility_1.getprop)(ctxmap, 'result', (0, StructUtility_1.getprop)(basectx, 'result'));
+        this.response = (0, StructUtility_1.getprop)(ctxmap, 'response', (0, StructUtility_1.getprop)(basectx, 'response'));
+        this.op = this.resolveOp(opname);
+    }
+    resolveOp(opname) {
+        const entname = (0, StructUtility_1.getprop)(this.entity, 'name', '');
+        const cacheKey = entname + ':' + opname;
+        let op = (0, StructUtility_1.getprop)(this.opmap, cacheKey);
+        if (null == op && null != opname) {
+            const opcfg = (0, StructUtility_1.getpath)(this.config, ['entity', entname, 'op', opname]);
+            let input = 'match';
+            if ('update' === opname || 'create' === opname) {
+                input = 'data';
+            }
+            op = new Operation_1.Operation({
+                entity: entname,
+                name: opname,
+                input,
+                points: (0, StructUtility_1.getprop)(opcfg, 'points', [])
+            });
+            (0, StructUtility_1.setprop)(this.opmap, cacheKey, op);
+        }
+        return op;
+    }
+    error(code, msg) {
+        return new HookforgeError_1.HookforgeError(code, msg, this);
+    }
+    // The serialised context leaves the pipeline (a logger, an error dump), so
+    // it is cleaned; the live fields stay raw for the pipeline's own use.
+    toJSON() {
+        const record = {
+            id: this.id,
+            op: this.op,
+            spec: this.spec,
+            entity: this.entity,
+            result: this.result,
+            response: this.response,
+            meta: this.meta,
+        };
+        const clean = this.utility?.clean;
+        return 'function' === typeof clean ? clean(this, record) : record;
+    }
+    toString() {
+        return 'Context ' + this.utility?.struct.jsonify(this.toJSON());
+    }
+    [node_util_1.inspect.custom]() {
+        return this.toString();
+    }
+}
+exports.Context = Context;
+//# sourceMappingURL=Context.js.map

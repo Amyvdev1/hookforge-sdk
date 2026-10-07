@@ -1,0 +1,18 @@
+# BasicSimulateFlow
+
+main: kit: flow: BasicSimulateFlow:
+{
+  entity: "simulate",
+  kind: "basic",
+  name: "BasicSimulateFlow",
+  step: [
+    {
+      i: {
+        ref: "simulate_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSimulateFlow"
+}

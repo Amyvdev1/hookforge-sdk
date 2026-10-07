@@ -1,0 +1,18 @@
+# BasicVerifyFlow
+
+main: kit: flow: BasicVerifyFlow:
+{
+  entity: "verify",
+  kind: "basic",
+  name: "BasicVerifyFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyFlow"
+}

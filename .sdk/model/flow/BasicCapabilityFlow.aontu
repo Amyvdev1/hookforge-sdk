@@ -1,0 +1,28 @@
+# BasicCapabilityFlow
+
+main: kit: flow: BasicCapabilityFlow:
+{
+  entity: "capability",
+  kind: "basic",
+  name: "BasicCapabilityFlow",
+  step: [
+    {
+      i: {
+        ref: "capability_ref01",
+        srcdatavar: "capability_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-capability_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCapabilityFlow"
+}

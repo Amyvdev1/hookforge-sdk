@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "evaluate": {
+      "EVALUATE00": {
+        "capabilities": {},
+        "scenario": {},
+        "id": "EVALUATE00"
+      },
+      "EVALUATE01": {
+        "capabilities": {},
+        "scenario": {},
+        "id": "EVALUATE01"
+      },
+      "EVALUATE02": {
+        "capabilities": {},
+        "scenario": {},
+        "id": "EVALUATE02"
+      }
+    }
+  },
+  "new": {
+    "evaluate": {
+      "evaluate_ref01": {
+        "capabilities": {},
+        "scenario": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/evaluate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

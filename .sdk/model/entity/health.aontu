@@ -1,0 +1,39 @@
+# Entity: health
+
+main: kit: entity: health: {
+
+  alias: field: {}
+
+  name: "health"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /health"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/health"
+          s: [
+            {
+              lit: "health"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

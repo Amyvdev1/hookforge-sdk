@@ -1,0 +1,66 @@
+# Entity: verify
+
+main: kit: entity: verify: {
+
+  alias: field: {}
+
+  fields: {
+    payload: {
+      h: "Payload"
+      n: "payload"
+      r: true
+      t: "`$OBJECT`"
+    }
+    secret: {
+      h: "Secret"
+      n: "secret"
+      r: false
+      t: "`$STRING`"
+    }
+    signature: {
+      h: "Signature"
+      n: "signature"
+      r: false
+      t: "`$ANY`"
+    }
+    timestamp: {
+      h: "Timestamp"
+      n: "timestamp"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "verify"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/verify"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/verify"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

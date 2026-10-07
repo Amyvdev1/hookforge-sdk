@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "health": {
+      "HEALTH00": {
+        "id": "HEALTH00"
+      },
+      "HEALTH01": {
+        "id": "HEALTH01"
+      },
+      "HEALTH02": {
+        "id": "HEALTH02"
+      }
+    }
+  },
+  "new": {
+    "health": {
+      "health_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /health": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

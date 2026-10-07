@@ -1,0 +1,54 @@
+# Entity: simulate
+
+main: kit: entity: simulate: {
+
+  alias: field: {}
+
+  fields: {
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: false
+      t: "`$OBJECT`"
+    }
+    scenario: {
+      h: "Scenario"
+      n: "scenario"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "simulate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/simulate"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/simulate"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "simulate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

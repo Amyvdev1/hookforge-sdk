@@ -1,0 +1,42 @@
+# Entity: capability
+
+main: kit: entity: capability: {
+
+  alias: field: {}
+
+  name: "capability"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/capabilities"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/capabilities"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "capabilities"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "sign": {
+      "SIGN00": {
+        "payload": {},
+        "secret": "s29",
+        "signature": "s2a",
+        "timestamp": 43,
+        "id": "SIGN00"
+      },
+      "SIGN01": {
+        "payload": {},
+        "secret": "s51",
+        "signature": "s52",
+        "timestamp": 83,
+        "id": "SIGN01"
+      },
+      "SIGN02": {
+        "payload": {},
+        "secret": "s79",
+        "signature": "s7a",
+        "timestamp": 123,
+        "id": "SIGN02"
+      }
+    }
+  },
+  "new": {
+    "sign": {
+      "sign_ref01": {
+        "payload": {},
+        "secret": "sa1",
+        "signature": "sa2",
+        "timestamp": 163
+      }
+    }
+  },
+  "requests": {
+    "POST /api/sign": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

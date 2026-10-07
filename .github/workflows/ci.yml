@@ -1,0 +1,36 @@
+name: Verify SDK
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --prefix ts
+      - run: npm test --prefix ts
+      - uses: actions/checkout@v4
+        with:
+          repository: Amyvdev1/hookforge
+          ref: 6123c76e36533aaab3770c0cb3af8d573450fa00
+          path: .api
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r .api/requirements.txt
+      - name: Test generated SDK against local API
+        shell: bash
+        run: |
+          python -m uvicorn app.main:app --app-dir .api --host 127.0.0.1 --port 8765 &
+          api_pid=$!
+          trap 'kill "$api_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8765/health; then break; fi
+            sleep 1
+          done
+          node scripts/local-smoke.cjs

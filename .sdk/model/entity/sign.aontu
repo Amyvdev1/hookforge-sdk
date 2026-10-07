@@ -1,0 +1,66 @@
+# Entity: sign
+
+main: kit: entity: sign: {
+
+  alias: field: {}
+
+  fields: {
+    payload: {
+      h: "Payload"
+      n: "payload"
+      r: true
+      t: "`$OBJECT`"
+    }
+    secret: {
+      h: "Secret"
+      n: "secret"
+      r: false
+      t: "`$STRING`"
+    }
+    signature: {
+      h: "Signature"
+      n: "signature"
+      r: false
+      t: "`$ANY`"
+    }
+    timestamp: {
+      h: "Timestamp"
+      n: "timestamp"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "sign"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/sign"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/sign"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "sign"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,54 @@
+# Entity: evaluate
+
+main: kit: entity: evaluate: {
+
+  alias: field: {}
+
+  fields: {
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: false
+      t: "`$OBJECT`"
+    }
+    scenario: {
+      h: "Scenario"
+      n: "scenario"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "evaluate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/evaluate"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/evaluate"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "evaluate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
