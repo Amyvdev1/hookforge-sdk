@@ -62,9 +62,7 @@ Separately, `node scripts/local-smoke.cjs` passed **eight real HTTP checks**, us
 
 The signature input is an explicitly public test fixture, not a credential. A separate duplicate-delivery example is included. A small CI workflow repeats the generated tests and local API checks.
 
-## Limits and timing
-
-This was an AI-assisted exercise. The first observed session start was **07:19:24 America/Chicago**, with an interrupted scaffold and resumption at **07:22:42**. Repository preparation and verification were bounded to the same 30-minute elapsed window. This records the assistant's session, not a measured claim about Amy's hands-on time; her actual human time must be recorded separately.
+## Limitations
 
 Not evaluated: hosted deployment, authentication, Docker execution, browser SDK behavior, load, production webhook delivery, or npm publication. The README includes Docker instructions, but the executed API used Python/Uvicorn. Weak success response schemas limit generated response typing. Future API-spec improvements would be useful, but were deliberately outside this bounded exercise.
 
