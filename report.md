@@ -46,7 +46,9 @@ One failed iteration was mine: my rewritten README omitted the TypeScript Quicks
 
 ## Validation
 
-Generation completed successfully. SDKGen doctor reported that the scaffold matched. The generated test run finished with **218 tests: 217 passed, zero failed, one skipped**. These are generated/offline checks; they do not establish production readiness.
+Generation completed successfully. SDKGen doctor reported that the scaffold matched. **217 generated tests passed, with zero failures and one skipped; eight additional real HTTP checks passed against the local HookForge API.** The generated tests use offline checks; these results do not establish production readiness.
+
+The repository's [GitHub Actions verification passed](https://github.com/Amyvdev1/hookforge-sdk/actions/runs/37626884677).
 
 Separately, `node scripts/local-smoke.cjs` passed **eight real HTTP checks**, using generated SDK methods against the local API:
 

@@ -35,7 +35,14 @@ node examples/duplicate-delivery.cjs
 node scripts/local-smoke.cjs
 ```
 
-On Windows, the generated build script uses `rm -rf`. With Git Bash installed, run `npm --prefix ts --script-shell="C:/Program Files/Git/bin/bash.exe" test` from the repository root instead of the first three commands.
+On Windows, the generated build script requires Git Bash because it uses `rm -rf`. From the repository root, install dependencies and run:
+
+```powershell
+npm ci --prefix ts
+npm --prefix ts --script-shell="C:/Program Files/Git/bin/bash.exe" test
+node examples/duplicate-delivery.cjs
+node scripts/local-smoke.cjs
+```
 
 The [minimal runnable example](examples/duplicate-delivery.cjs) imports `HookforgeSDK` from `ts/dist/HookforgeSDK.js`, constructs a client with `{ base: 'http://127.0.0.1:8765' }`, calls `client.Simulate().create(...)`, and reads the returned entity with `.data()`. Set `HOOKFORGE_BASE_URL` to use another instance; the example and smoke test read it. No credentials are needed. The explicit signing secret in the smoke test is a public fixture, never a real credential.
 
