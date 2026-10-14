@@ -34,3 +34,4 @@ jobs:
             sleep 1
           done
           node scripts/local-smoke.cjs
+          node scripts/verify-examples.cjs

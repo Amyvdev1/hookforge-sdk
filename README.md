@@ -6,6 +6,14 @@ HookForge is a local webhook reliability workbench. Its API evaluates receiver c
 
 This SDK is not published to npm. Clone and build it locally. Read [the developer-experience report](report.md) for the generator findings and exact verification results.
 
+## Start here
+
+**[Fresh-clone quickstart: API → SDK → first request → explained failure behavior](docs/quickstart.md)**
+
+The guide includes separate Windows and macOS/Linux commands, expected outputs, and troubleshooting. Use `examples/health.cjs` for your first request, `examples/duplicate-delivery.cjs` for duplicates, and `examples/out-of-order.cjs` for stale-event handling. Each example isolates one decision.
+
+Already set up? Run `node scripts/local-smoke.cjs` against the local API to verify eight HTTP checks. For the design findings, read [the developer-experience report](report.md).
+
 ## Start the API
 
 Use the existing public HookForge repository at commit `6123c76e36533aaab3770c0cb3af8d573450fa00`:
