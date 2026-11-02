@@ -1,3 +1,16 @@
+# HookForge SDK — Type-Safe Webhook Verification & Resilient API Client
+**Stack:** TypeScript • Node.js (Node 24) • Zod • Vitest
+
+### Architectural Overview
+**HookForge SDK** provides a zero-trust, strictly typed client layer for consuming external webhooks and B2B REST APIs. Every inbound event and outbound response is validated against runtime Zod schemas and mapped into deterministic recovery actions (`RETRYABLE_NETWORK`, `FATAL_SCHEMA_DRIFT`, `AUTH_SIGNATURE_INVALID`).
+
+### Core Features
+- **Runtime Schema Enforcement:** Eliminates silent `any` type leakage across external API boundaries using compiled Zod validators.
+- **Structured Error Contracts:** Translates raw HTTP/network exceptions into typed domain errors with explicit next-action metadata for autonomous agents and human operators.
+
+
+---
+
 # HookForge SDK
 
 A TypeScript SDK for [HookForge](https://github.com/Amyvdev1/hookforge), generated with the Voxgig SDK toolchain for its first mini task. Maintained by Amy Villa.
